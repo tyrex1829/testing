@@ -1,6 +1,10 @@
-import { describe, it, expect } from "vitest";
+import { describe, it, expect, vi } from "vitest";
 import { app } from "../index";
 import request from "supertest";
+
+vi.mock("../db", () => ({
+  prismaClient: { sum: { create: vi.fn() } },
+}));
 
 describe("GET /", () => {
   it("should return server state", async () => {
