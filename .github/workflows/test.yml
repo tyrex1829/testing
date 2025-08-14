@@ -18,10 +18,15 @@ jobs:
         with:
           node-version: 20
 
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 10
+
       - name: Install dependencies
-        working-directory: 5-express-vitest-prisma
-        run: npm install && npx prisma generate
+        working-directory: vitest-express-tests
+        run: pnpm install && pnpm dlx prisma generate
 
       - name: Run tests
-        working-directory: 5-express-vitest-prisma
-        run: npm run test
+        working-directory: vitest-express-tests
+        run: pnpm run test
