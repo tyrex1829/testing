@@ -2,9 +2,7 @@ import { describe, it, expect, vi } from "vitest";
 import { app } from "../index";
 import request from "supertest";
 
-vi.mock("../db", () => ({
-  prismaClient: { sum: { create: vi.fn() } },
-}));
+vi.mock("../db");
 
 describe("GET /", () => {
   it("should return server state", async () => {
